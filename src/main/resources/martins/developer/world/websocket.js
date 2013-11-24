@@ -1,26 +1,9 @@
-var socket;
-if (window.WebSocket) {
-    socket = new WebSocket("ws://localhost:8080/websocket");
-    socket.onmessage = function(event) {
-        $('#output').append('<p>Received: '+event.data+'</p>');
-    };
-    socket.onopen = function(event) {
-        $('#output').append('<p>Web Socket opened!</p>');
-    };
-    socket.onclose = function(event) {
-        $('#output').append('<p>Web Socket closed!</p>');
-    };
-} else {
-    alert("Your browser does not support Websockets. (Use Chrome)");
+var ws = $.gracefulWebSocket("ws://127.0.0.1:8080/websocket");
+ws.onmessage = function(event) {
+    var messageFromServer = event.data;
+    $('#output').append('<p>Received: '+messageFromServer+'</p>');
 }
 
 function send(message) {
-    if (!window.WebSocket) {
-        return;
-    }
-    if (socket.readyState == WebSocket.OPEN) {
-        socket.send(message);
-    } else {
-        alert("The socket is not open.");
-    }
+    ws.send(message);
 }

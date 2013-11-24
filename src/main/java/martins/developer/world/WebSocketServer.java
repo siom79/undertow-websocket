@@ -47,7 +47,7 @@ public class WebSocketServer {
                     protected void onFullTextMessage(WebSocketChannel channel, BufferedTextMessage message) {
                         String data = message.getData();
                         lastReceivedMessage = data;
-                        LOGGER.info("Received data: "+data);
+                        LOGGER.info("Received data: " + data);
                         WebSockets.sendText(data, channel, null);
                     }
                 });
