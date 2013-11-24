@@ -1,0 +1,15 @@
+<html>
+<head><title>Web Socket Test</title></head>
+<body>
+<script src="jquery-2.0.3.min.js"></script>
+<script src="jquery.gracefulWebSocket.js"></script>
+<script src="websocket.js"></script>
+<form onsubmit="return false;">
+    <input type="text" name="message" value="Hello, World!"/>
+    <input type="button" value="Send Web Socket Data" onclick="send(this.form.message.value)"/>
+</form>
+<div id="output">
+
+</div>
+</body>
+</html>
